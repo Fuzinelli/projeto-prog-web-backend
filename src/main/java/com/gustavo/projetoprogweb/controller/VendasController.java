@@ -39,6 +39,7 @@ public class VendasController {
         update.setData(venda.getData());
         update.setClientes(venda.getClientes());
         return vendasService.add(update);
+
     }
 
     @GetMapping("/getone/{id}")
