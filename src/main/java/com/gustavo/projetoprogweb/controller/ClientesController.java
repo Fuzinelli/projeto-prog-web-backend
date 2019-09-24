@@ -32,6 +32,13 @@ public class ClientesController {
         clientesService.deleteById(id);
     }
 
+    @PutMapping("/update/{id}")
+    public ClientesEntity update(@PathVariable("id") long id, @RequestBody ClientesEntity cliente){
+        ClientesEntity update = clientesService.findById(id);
+        update.setNome(cliente.getNome());
+        return clientesService.add(update);
+    }
+
     @GetMapping("/getone/{id}")
     public ClientesEntity getClientesById(@PathVariable("id") long id){
         return clientesService.findById(id);

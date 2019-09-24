@@ -9,7 +9,6 @@ import java.util.List;
 public interface VendasService {
     VendasEntity findById(long id);
 
-
     List<VendasResponse> findAll();
 
     VendasEntity add(VendasEntity vendas);

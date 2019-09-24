@@ -1,6 +1,7 @@
 package com.gustavo.projetoprogweb.controller;
 
 
+import com.gustavo.projetoprogweb.model.ClientesEntity;
 import com.gustavo.projetoprogweb.model.VendasEntity;
 import com.gustavo.projetoprogweb.model.VendasResponse;
 import com.gustavo.projetoprogweb.service.VendasService;
@@ -30,6 +31,14 @@ public class VendasController {
     @DeleteMapping("/delete/{id}")
     public void deleteVendaById(@PathVariable("id") Long id){
         vendasService.deleteById(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public VendasEntity update(@PathVariable("id") long id, @RequestBody VendasEntity venda){
+        VendasEntity update = vendasService.findById(id);
+        update.setData(venda.getData());
+        update.setClientes(venda.getClientes());
+        return vendasService.add(update);
     }
 
     @GetMapping("/getone/{id}")
